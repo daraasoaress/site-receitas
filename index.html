@@ -1,0 +1,184 @@
+<!DOCTYPE html>
+<html lang="pt-BR">
+<head>
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Meu Site Verde</title>
+  <link rel="stylesheet" href="style.css">
+  <meta charset="UTF-8">
+  <meta name="viewport" content="width=device-width, initial-scale=1.0">
+  <title>Receitas Saudáveis</title>
+  <style>
+    
+    body {
+      font-family: Arial, sans-serif;
+      margin: 0;
+      padding: 0;
+    }
+    header, nav, main, footer {
+      padding: 1em;
+    }
+    nav a {
+      margin-right: 15px;
+      text-decoration: none;
+      color: #114407;
+    }
+    nav a:hover {
+      text-decoration: underline;
+    }
+    form label {
+      display: inline-block;
+      width: 120px;
+      margin-bottom: 0.5em;
+    }
+    form input {
+      margin-bottom: 0.5em;
+      padding: 0.3em;
+    }
+    button {
+      padding: 0.5em 1em;
+      cursor: pointer;
+    }
+    table {
+      width: 100%;
+      border-collapse: collapse;
+      margin-top: 1em;
+    }
+    table, th, td {
+      border: 1px solid #ccc;
+    }
+    th, td {
+      padding: 0.5em;
+      text-align: left;
+    }
+    caption {
+      caption-side: top;
+      font-weight: bold;
+      margin-bottom: 0.5em;
+    }
+    footer {
+      background-color: #f1f1f1;
+      text-align: center;
+      font-size: 0.9em;
+      margin-top: 2em;
+    }
+    
+  </style>
+</head>
+<body>
+  <header>
+    <h1>Receitas Saudáveis</h1>
+  </header>
+  
+  <nav>
+    <a href="index.html">Início</a>
+    <a href="desenvolvedores.html">Desenvolvedores</a>
+  </nav>
+  
+  <main>
+   
+    <section>
+      <h2>Cadastro de Receitas</h2>
+      <form id="cadastroForm">
+        <div>
+          <label for="nomeReceita">Nome da Receita:</label>
+          <input type="text" id="nomeReceita" name="nomeReceita" required>
+        </div>
+        <div>
+          <label for="descricaoReceita">Descrição:</label>
+          <input type="text" id="descricaoReceita" name="descricaoReceita" required>
+        </div>
+        <button type="button" onclick="adicionarReceita()">Gravar</button>
+      </form>
+    </section>
+
+    
+    <section>
+      <h2>Receitas Cadastradas</h2>
+      <table id="tabelaReceitas">
+        <caption>Lista de Receitas</caption>
+        <thead>
+          <tr>
+            <th>Nome da Receita</th>
+            <th>Descrição</th>
+          </tr>
+        </thead>
+        <tbody>
+         
+          <tr>
+            <td>Salada de Frutas</td>
+            <td>Frutas frescas com mel</td>
+          </tr>
+          <tr>
+            <td>Quinoa com Legumes</td>
+            <td>Quinoa cozida com vegetais</td>
+          </tr>
+          <tr>
+            <td>Smoothie Verde</td>
+            <td>Batido de espinafre e abacaxi</td>
+          </tr>
+          <tr>
+            <td>Wrap Integral</td>
+            <td>Wrap recheado com frango e alface</td>
+          </tr>
+          <tr>
+            <td>Sopa Detox</td>
+            <td>Sopa leve com legumes variados</td>
+          </tr>
+          <tr>
+            <td>Crepioca</td>
+            <td>Crepe feito com goma de tapioca</td>
+          </tr>
+          <tr>
+            <td>Omelete de Claras</td>
+            <td>Omelete com claras e espinafre</td>
+          </tr>
+          <tr>
+            <td>Iogurte com Granola</td>
+            <td>Iogurte natural com granola e frutas</td>
+          </tr>
+          <tr>
+            <td>Suco Detox</td>
+            <td>Suco de couve com limão</td>
+          </tr>
+          <tr>
+            <td>Pão de Aveia</td>
+            <td>Pão integral com aveia</td>
+          </tr>
+        </tbody>
+      </table>
+    </section>
+  </main>
+  
+  <footer>
+    <p>IFRN campus Santa Cruz</p>
+    <p>Trabalho de Autoria Web</p>
+    <p>Prof. Marcelo Figueiredo Barbosa Júnior</p>
+    <p>Integrantes: Dandara Soares de Araújo, Fatima Ellen Guilherme da Silva</p>
+  </footer>
+  
+  <script>
+    function adicionarReceita() {
+      const nome = document.getElementById('nomeReceita').value.trim();
+      const descricao = document.getElementById('descricaoReceita').value.trim();
+
+      if (nome === "" || descricao === "") {
+        alert("Preencha todos os campos.");
+        return;
+      }
+
+      const tabelaBody = document.getElementById('tabelaReceitas').querySelector('tbody');
+      const novaLinha = tabelaBody.insertRow();
+
+      const cellNome = novaLinha.insertCell(0);
+      const cellDescricao = novaLinha.insertCell(1);
+
+      cellNome.textContent = nome;
+      cellDescricao.textContent = descricao;
+
+     
+      document.getElementById('cadastroForm').reset();
+    }
+  </script>
+</body>
+</html>
